@@ -1,20 +1,10 @@
-# smartty
+## Smarty: The Website to dig into smart home appliances!
 
-## Build Setup
+## Settign up NodeRED Authentication
 
-```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+### Used Tools w/ Docker
+1. Node-RED
+2. Nginx to host the app.
+3. Duplicati for Backups.
+4. mongoDB for DB.
+5. Portainer for Health details.
