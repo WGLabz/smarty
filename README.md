@@ -4,6 +4,25 @@
 ## Creds
 Duplicati Passphrase: L2@Ki
 
+## Docker env variables
+Rename or copy the `**.env` file to `.env` and add the credntials.
+
+## Add DB User on MongoDB(New Installation)
+First access the shell of the container `docker exec -it mongo bash` and run the following commands,
+
+```sql
+> use smarty
+> db.createUser(
+  {
+    user: "root",
+    pwd: "********", 
+    roles: [
+       { role: "readWrite", db: "smarty" }
+    ]
+  }
+)
+```
+
 ## Settign up NodeRED Authentication
 
 We need to add the following code snipper to the nodered `settings.js` file. The passwords need to be hashed and can be generated using [this site](https://www.devglan.com/online-tools/bcrypt-hash-generator)
@@ -28,8 +47,8 @@ Edit the `settings.js` file using the command `sudo nano /opt/volumes/node-red/d
     }
 ```
 ## Used Tools w/ Docker
-1. Node-RED
-2. Nginx to host the app.
-3. Duplicati for Backups.
-4. mongoDB for DB.
-5. Portainer for Health details.
+1. Node-RED [Secured with Basic Auth]
+2. Nginx to host the app.[Port 80 Open]
+3. Duplicati for Backups. [Secured Later with password]
+4. mongoDB for DB. [Secured not ceonnectible from outside]
+5. Portainer for Health details. [Secured with basic Auth]
