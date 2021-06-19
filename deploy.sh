@@ -9,6 +9,7 @@ check_and_install_docker(){
     ./check_and_install_docker.sh
     echo ''
     echo ''
+    cd ..
 }
 
 pull_from_git(){
@@ -20,6 +21,7 @@ check_volumes_folder(){
         echo '/opt/volumes folder does not exist.'
         mkdir -p /opt/volumes
     fi
+    chmod 777 -R /opt/volumes
 }
 
 deploy_containers(){
