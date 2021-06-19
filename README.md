@@ -1,5 +1,8 @@
-## Smarty: The Website to dig into smart home appliances!
+# Smarty: The Website to dig into smart home appliances!
+> Setup Duplicati and Portainer credntials after the servers are up.
 
+## Creds
+Duplicati Passphrase: L2@Ki
 
 ## Settign up NodeRED Authentication
 
@@ -24,7 +27,7 @@ Edit the `settings.js` file using the command `sudo nano /opt/volumes/node-red/d
         ]
     }
 ```
-### Used Tools w/ Docker
+## Used Tools w/ Docker
 1. Node-RED
 2. Nginx to host the app.
 3. Duplicati for Backups.
