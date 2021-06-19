@@ -15,79 +15,79 @@ services:
         networks:
             - smarty
 
-        nginx:
-            container_name: nginx
-            image: nginx
-            restart: unless-stopped
-            ports:
-                - "80:80"
-            environment:
-                - NGINX_PORT=80
-            volumes:
-                - /opt/volumes/nginx/html:/usr/share/nginx/html
-            networks:
-                - smarty
+    nginx:
+        container_name: nginx
+        image: nginx
+        restart: unless-stopped
+        ports:
+            - "80:80"
+        environment:
+            - NGINX_PORT=80
+        volumes:
+            - /opt/volumes/nginx/html:/usr/share/nginx/html
+        networks:
+            - smarty
 
-        mongo:
-            container_name: mongo
-            image: mongo
-            restart: unless-stopped
-            ports:
-                - 27017:27017
-            environment:
-                MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USERNAME}
-                MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
-            volumes:
-                - /opt/volumes/mongo/db:/data/db
-                - /opt/volumes/mongo/backup:/backup
-            networks:
-                - smarty
+    mongo:
+        container_name: mongo
+        image: mongo
+        restart: unless-stopped
+        ports:
+            - 27017:27017
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
+        volumes:
+            - /opt/volumes/mongo/db:/data/db
+            - /opt/volumes/mongo/backup:/backup
+        networks:
+            - smarty
 
-        mongo-express:
-            image: mongo-express
-            container_name: mongo-express
-            restart: unless-stopped
-            ports:
-                - 8081:8081
-            environment:
-                ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGODB_USERNAME}
-                ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGODB_PASSWORD}
-                ME_CONFIG_BASICAUTH_USERNAME: ${MONGOEXPRESS_USERNAME}
-                ME_CONFIG_BASICAUTH_PASSWORD: ${MONGOEXPRESS_PASSWORD}
-            networks:
-                - smarty
+    mongo-express:
+        image: mongo-express
+        container_name: mongo-express
+        restart: unless-stopped
+        ports:
+            - 8081:8081
+        environment:
+            ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGODB_USERNAME}
+            ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGODB_PASSWORD}
+            ME_CONFIG_BASICAUTH_USERNAME: ${MONGOEXPRESS_USERNAME}
+            ME_CONFIG_BASICAUTH_PASSWORD: ${MONGOEXPRESS_PASSWORD}
+        networks:
+            - smarty
 
-        portainer:
-            container_name: portainer
-            image: portainer/portainer-ce
-            command: -H unix:///var/run/docker.sock
-            restart: always
-            ports:
-                - 9000:9000
-                - 8000:8000
-            volumes:
-                - /var/run/docker.sock:/var/run/docker.sock
-                - /opt/volumes/portainer/data:/data
-            privileged: true
-            networks:
-                - smarty
+    portainer:
+        container_name: portainer
+        image: portainer/portainer-ce
+        command: -H unix:///var/run/docker.sock
+        restart: always
+        ports:
+            - 9000:9000
+            - 8000:8000
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - /opt/volumes/portainer/data:/data
+        privileged: true
+        networks:
+            - smarty
 
-        duplicati:
-            image: ghcr.io/linuxserver/duplicati
-            container_name: duplicati
-            environment:
-                - PUID=0
-                - PGID=0
-                - TZ=Asia/Calcutta
-            volumes:
-                - /opt/volumes/duplicati/config:/config
-                - /opt/duplicati_backups:/backups
-                - /opt/volumes:/source
-            ports:
-                - 8200:8200
-            restart: unless-stopped
-            networks:
-                - smarty
+    duplicati:
+        image: ghcr.io/linuxserver/duplicati
+        container_name: duplicati
+        environment:
+            - PUID=0
+            - PGID=0
+            - TZ=Asia/Calcutta
+        volumes:
+            - /opt/volumes/duplicati/config:/config
+            - /opt/duplicati_backups:/backups
+            - /opt/volumes:/source
+        ports:
+            - 8200:8200
+        restart: unless-stopped
+        networks:
+            - smarty
 
 # Universal Network
 networks:
