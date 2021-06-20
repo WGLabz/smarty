@@ -1,16 +1,16 @@
 # Smarty: The Website to dig into smart home appliances!
-> Setup Duplicati and Portainer credntials after the servers are up.
+> Setup Duplicati and Portainer credentials after the servers are up.
 
 ## Creds
 Duplicati Passphrase: L2@Ki
 
 ## Docker env variables
-Rename or copy the `**.env` file to `.env` and add the credntials.
+Rename or copy the `**.env` file to `.env` and add the credentials.
 
 ## Add DB User on MongoDB(New Installation)
 First access the shell of the container `docker exec -it mongo bash` and run the following commands,
 
-```sql
+```SQL
 > use smarty
 > db.createUser(
   {
@@ -25,9 +25,9 @@ First access the shell of the container `docker exec -it mongo bash` and run the
 
 ## Settign up NodeRED Authentication
 
-We need to add the following code snipper to the nodered `settings.js` file. The passwords need to be hashed and can be generated using [this site](https://www.devglan.com/online-tools/bcrypt-hash-generator)
+We need to add the following code snippet to the nodered `settings.js` file. The passwords need to be hashed and can be generated using [this site](https://www.devglan.com/online-tools/bcrypt-hash-generator)
 
-Edit the `settings.js` file using the command `sudo nano /opt/volumes/node-red/data/settings.js`, add the following snippet and retstart the docker container, `docker restart node_red`
+Edit the `settings.js` file using the command `sudo nano /opt/volumes/node-red/data/settings.js`, add the following snippet and restart the docker container, `docker restart node_red`
 
 ```js
     adminAuth: {
