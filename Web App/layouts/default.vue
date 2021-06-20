@@ -15,13 +15,28 @@
     </v-app-bar>
     <v-main>
       <v-bottom-navigation value="activeBtn" color="#033" horizontal>
-        <a href="/" class="v-btn">
+        <v-btn href="/" nuxt>
           <span>Home</span>
-        </a>
-        <v-menu open-on-hover offset-y></v-menu>
-        <a href="/categories" class="v-btn">
-          <span>Categories</span>
-        </a>
+        </v-btn>
+        <v-menu open-on-hover offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn v-on="on" href="/categories" nuxt>
+              <span>Categories</span>
+            </v-btn>
+          </template>
+          <v-card class="mx-auto" max-width="344" outlined>
+            <v-list-item
+              v-for="(item, index) in categories"
+              :key="index"
+              router
+              :to="`/category/${item.slug}`"
+            >
+              <v-list-item-action>
+                <v-list-item-title>{{ item.name }}</v-list-item-title>
+              </v-list-item-action>
+            </v-list-item>
+          </v-card>
+        </v-menu>
         <v-btn href="https://wglabz.in" target="_blank">
           <span>Blog</span>
         </v-btn>
@@ -130,6 +145,7 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      activeBtn: 1,
       items: [
         {
           icon: 'mdi-apps',
@@ -144,7 +160,18 @@ export default {
       ],
       miniVariant: false,
       title: 'Smarty',
+      categories: Array,
     }
+  },
+  mounted() {
+    this.$axios
+      .get('/categories')
+      .then((res) => {
+        this.categories = res.data
+      })
+      .catch((err) => {
+        console.log('Error in fetching catgory details for homepage! ERR' + err)
+      })
   },
 }
 </script>
