@@ -63,8 +63,8 @@ For serving static assets like image, without going through the platform, add th
 where you can upload all the static files to the `/assets/` folder and can be accssed by using `http(s)//<node_red_ip>:<port>/<aeet_path>` endpoint.
 
 ## Used Tools w/ Docker
-1. Node-RED [Secured with Basic Auth]
-2. Nginx to host the app.[Port 80 Open]
-3. Duplicati for Backups. [Secured Later with password]
-4. mongoDB for DB. [Secured not ceonnectible from outside]
-5. Portainer for Health details. [Secured with basic Auth]
+1. [Node-RED [Secured with Basic Auth]](https://nodered.org/)
+2. [Nginx to host the app.[Port 80 Open]](https://www.nginx.com/)
+3. [Duplicati for Backups. [Secured Later with password]](https://www.duplicati.com/)
+4. [mongoDB for DB. [Secured not ceonnectible from outside]](https://www.mongodb.com/)
+5. [Portainer for Health details. [Secured with basic Auth]](https://www.portainer.io/)

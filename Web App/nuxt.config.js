@@ -8,8 +8,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - smartty',
-    title: 'smartty',
+    titleTemplate: '%s - A smart home devices database',
+    title: 'Smarty',
     htmlAttrs: {
       lang: 'en',
     },
@@ -65,7 +65,7 @@ export default {
           success: colors.green.accent3,
         },
         light: {
-          primary: '#03a9f4',
+          primary: '#4285F4',
           secondary: '#00bcd4',
           accent: '#009688',
           error: '#f44336',
