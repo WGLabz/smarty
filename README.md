@@ -46,6 +46,22 @@ Edit the `settings.js` file using the command `sudo nano /opt/volumes/node-red/d
         ]
     }
 ```
+To make the http calls to the platform secured, add the following line to the `settings.js` file,
+
+```js
+    httpNodeAuth: {
+        user:"app",
+        pass:"xxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+```
+
+For serving static assets like image, without going through the platform, add the following line to the file,
+
+```js
+    httpStatic:"/assets/",
+```
+where you can upload all the static files to the `/assets/` folder and can be accssed by using `http(s)//<node_red_ip>:<port>/<aeet_path>` endpoint.
+
 ## Used Tools w/ Docker
 1. Node-RED [Secured with Basic Auth]
 2. Nginx to host the app.[Port 80 Open]
