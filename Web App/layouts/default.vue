@@ -77,8 +77,8 @@
         <v-divider></v-divider>
         <v-card-text class="white--text">
           <v-row>
-            <v-col class="col-md-6">
-              <v-card flat tile width="100%" class="white--text text-center custom-color">
+            <v-col lg="6">
+              <v-card flat tile class="secondary white--text text-center">
                 <v-card-title>Smarty</v-card-title>
                 <v-card-text class="white--text text-justify">
                   <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;" />
@@ -86,8 +86,8 @@
                 </v-card-text>
               </v-card>
             </v-col>
-            <v-col class="col-md-3">
-              <v-card flat tile width="100%" class="secondary white--text text-center custom-color">
+            <v-col lg="3">
+              <v-card flat tile class="secondary white--text text-center">
                 <v-card-title>Links</v-card-title>
                 <v-card-text class="white--text text-left">
                   <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;" />
@@ -107,8 +107,8 @@
                 </v-card-text>
               </v-card>
             </v-col>
-            <v-col class="col-md-3">
-              <v-card flat tile width="100%" class="white--text custom-color">
+            <v-col lg="3">
+              <v-card flat tile class="white--text secondary">
                 <v-card-title>Contact</v-card-title>
                 <v-card-text class="white--text text-left">
                   <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;" />
@@ -180,10 +180,6 @@ a:link,
 a:visited {
   color: white;
   text-decoration: none;
-}
-.custom-color {
-  background-color: #3e4551 !important;
-  border-color: aqua;
 }
 .container_ {
   padding: 0 0 0 0 !important;
