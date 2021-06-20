@@ -14,7 +14,7 @@
       <v-spacer />
     </v-app-bar>
     <v-main>
-      <v-bottom-navigation :value="activeBtn" color="primary" horizontal>
+      <v-bottom-navigation value="activeBtn" color="#033" horizontal>
         <a href="/" class="v-btn">
           <span>Home</span>
         </a>
@@ -27,7 +27,7 @@
         </v-btn>
       </v-bottom-navigation>
     </v-main>
-    <v-main>
+    <v-main class="container_">
       <nuxt />
     </v-main>
     <v-footer :padless="true">
@@ -157,5 +157,8 @@ a:visited {
 .custom-color {
   background-color: #3e4551 !important;
   border-color: aqua;
+}
+.container_ {
+  padding: 0 0 0 0 !important;
 }
 </style>>

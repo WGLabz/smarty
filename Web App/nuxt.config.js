@@ -1,13 +1,15 @@
 import colors from 'vuetify/es5/util/colors'
 
+const token = Buffer.from(`${process.env.nr_username}:${process.env.nr_password}`, 'utf8').toString('base64')
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - smartty',
-    title: 'smartty',
+    titleTemplate: '%s - A smart home devices database',
+    title: 'Smarty',
     htmlAttrs: {
       lang: 'en',
     },
@@ -43,7 +45,9 @@ export default {
     }
   },
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: [
+    '@nuxtjs/axios',
+  ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -61,7 +65,7 @@ export default {
           success: colors.green.accent3,
         },
         light: {
-          primary: '#03a9f4',
+          primary: '#4285F4',
           secondary: '#00bcd4',
           accent: '#009688',
           error: '#f44336',
@@ -72,7 +76,13 @@ export default {
       },
     },
   },
-
+  axios: {
+    // proxy: true
+    baseURL: 'http://172.105.55.104:1880',
+    headers: {
+      'Authorization': `Basic ${token}`
+    }
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     options: {

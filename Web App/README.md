@@ -1,4 +1,4 @@
-# smartty
+# Smarty
 
 ## Build Setup
 
