@@ -1,7 +1,7 @@
 <template>
   <v-card outlined>
     <v-img
-      :src="`${$axios.defaults.baseURL}/thumbnail?name=${categoryDetails.image}`"
+      :src="`${$axios.defaults.baseURL}/thumbnails/${categoryDetails.image}`"
       class="white--text align-center"
       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.4)"
       :height="height"

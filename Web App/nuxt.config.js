@@ -1,5 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
+const token = Buffer.from(`${process.env.nr_username}:${process.env.nr_password}`, 'utf8').toString('base64')
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -76,7 +78,10 @@ export default {
   },
   axios: {
     // proxy: true
-    baseURL: 'http://172.105.55.104:1880'
+    baseURL: 'http://172.105.55.104:1880',
+    headers: {
+      'Authorization': `Basic ${token}`
+    }
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

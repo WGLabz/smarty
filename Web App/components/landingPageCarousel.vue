@@ -2,7 +2,8 @@
   <div class="mt-0 p-0">
     <v-carousel cycle hide-delimiter-background interval="3000">
       <v-carousel-item
-        src="img/image_ph.jpg"
+        :src="`${$axios.defaults.baseURL}/thumbnails/${carouselItem.image}`"
+        lazy-src="img/image_ph.jpg"
         v-for="carouselItem in carouselItems"
         :key="carouselItem.id"
         :href="carouselItem.link"

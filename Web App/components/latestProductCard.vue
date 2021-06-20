@@ -4,14 +4,15 @@
       <v-img
         class="white--text align-end"
         height="200px"
-        :src="`${$axios.defaults.baseURL}/thumbnail?name=${productDetails.image}`"
+        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
+        :src="`${$axios.defaults.baseURL}/thumbnails/${productDetails.image}`"
         lazy-src="img/image_ph.jpg"
       >
         <v-card-title>{{productDetails.name}}</v-card-title>
       </v-img>
 
       <v-card-text class="text--primary text-center">
-        <div>Upto 60% + Extra 10%</div>
+        <div></div>
         <div>Baggit, Zara, Fossil</div>
       </v-card-text>
       <div class="text-center">
