@@ -26,7 +26,6 @@ commit_changes(){
         currentDate=$(date +%m-%d-%Y-%H:%M)
         message="Commit as of "$currentDate
     fi
-    git remote set-url origin https://oksbwn:love2%40kiti@github.com/oksbwn/OpenHAB3-Installation-Configurations
     git commit -m "$message"
     git push --progress origin $branch
 }
