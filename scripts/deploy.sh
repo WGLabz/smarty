@@ -5,11 +5,9 @@ branch=$(git rev-parse --abbrev-ref HEAD)
 
 check_and_install_docker(){
     echo 'Verifying Docker Installation!'
-    cd scripts
-    ./check_and_install_docker.sh
+    ./scripts/check_and_install_docker.sh
     echo ''
     echo ''
-    cd ..
 }
 
 pull_from_git(){
@@ -42,11 +40,23 @@ deploy_containers(){
     # docker stop cordova_builder
     docker stop mongo-express
 }
-
+build_app_and_copy(){
+    echo "Building the web app ande deploying to nginx"
+    cd Web\ App/
+    # Build the app
+    npm run generate
+    rm -r /opt/volumes/nginx/html/*
+    cp -r dist/* /opt/volumes/nginx/html/
+    cd ..
+    # docker restart nginx
+    echo ''
+    echo ''
+}
 check_volumes_folder
 check_and_install_docker
 pull_from_git
 deploy_containers
+build_app_and_copy
 
 echo "Task Complete!"
 echo ""

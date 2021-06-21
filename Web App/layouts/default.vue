@@ -11,17 +11,51 @@
         label="Search"
         class="hidden-sm-and-down pl-10 ml-4"
       ></v-text-field>
+
       <v-spacer />
+     <v-toolbar-items>
+        <v-btn :to="{name: 'home'}" flat exact>Home</v-btn>
+        <v-btn :to="{name: 'second-page'}" flat>Second Page</v-btn>
+
+        <v-menu offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn color="primary" dark v-on="on">Dropdown</v-btn>
+          </template>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title>Item 1</v-list-tile-title>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-title>Item 2</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </v-toolbar-items>
     </v-app-bar>
     <v-main>
       <v-bottom-navigation value="activeBtn" color="#033" horizontal>
-        <a href="/" class="v-btn">
+        <v-btn href="/" nuxt>
           <span>Home</span>
-        </a>
-        <v-menu open-on-hover offset-y></v-menu>
-        <a href="/categories" class="v-btn">
-          <span>Categories</span>
-        </a>
+        </v-btn>
+        <v-menu open-on-hover offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn v-on="on" href="/categories" nuxt>
+              <span>Categories</span>
+            </v-btn>
+          </template>
+          <v-card class="mx-auto" max-width="344" outlined>
+            <v-list-item
+              v-for="(item, index) in categories"
+              :key="index"
+              router
+              :to="`/category/${item.slug}`"
+            >
+              <v-list-item-action>
+                <v-list-item-title>{{ item.name }}</v-list-item-title>
+              </v-list-item-action>
+            </v-list-item>
+          </v-card>
+        </v-menu>
         <v-btn href="https://wglabz.in" target="_blank">
           <span>Blog</span>
         </v-btn>
@@ -62,8 +96,8 @@
         <v-divider></v-divider>
         <v-card-text class="white--text">
           <v-row>
-            <v-col class="col-md-6">
-              <v-card flat tile width="100%" class="white--text text-center custom-color">
+            <v-col lg="6">
+              <v-card flat tile class="secondary white--text text-center">
                 <v-card-title>Smarty</v-card-title>
                 <v-card-text class="white--text text-justify">
                   <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;" />
@@ -71,8 +105,8 @@
                 </v-card-text>
               </v-card>
             </v-col>
-            <v-col class="col-md-3">
-              <v-card flat tile width="100%" class="secondary white--text text-center custom-color">
+            <v-col lg="3">
+              <v-card flat tile class="secondary white--text text-center">
                 <v-card-title>Links</v-card-title>
                 <v-card-text class="white--text text-left">
                   <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;" />
@@ -92,8 +126,8 @@
                 </v-card-text>
               </v-card>
             </v-col>
-            <v-col class="col-md-3">
-              <v-card flat tile width="100%" class="white--text custom-color">
+            <v-col lg="3">
+              <v-card flat tile class="white--text secondary">
                 <v-card-title>Contact</v-card-title>
                 <v-card-text class="white--text text-left">
                   <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;" />
@@ -130,6 +164,7 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      activeBtn: 1,
       items: [
         {
           icon: 'mdi-apps',
@@ -144,7 +179,18 @@ export default {
       ],
       miniVariant: false,
       title: 'Smarty',
+      categories: Array,
     }
+  },
+  mounted() {
+    this.$axios
+      .get('/categories')
+      .then((res) => {
+        this.categories = res.data
+      })
+      .catch((err) => {
+        console.log('Error in fetching catgory details for homepage! ERR' + err)
+      })
   },
 }
 </script>
@@ -153,10 +199,6 @@ a:link,
 a:visited {
   color: white;
   text-decoration: none;
-}
-.custom-color {
-  background-color: #3e4551 !important;
-  border-color: aqua;
 }
 .container_ {
   padding: 0 0 0 0 !important;

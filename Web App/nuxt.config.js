@@ -66,7 +66,7 @@ export default {
         },
         light: {
           primary: '#4285F4',
-          secondary: '#00bcd4',
+          secondary: '#3e4551',
           accent: '#009688',
           error: '#f44336',
           warning: '#ffeb3b',

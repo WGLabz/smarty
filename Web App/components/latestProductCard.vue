@@ -12,11 +12,16 @@
       </v-img>
 
       <v-card-text class="text--primary text-center">
-        <div></div>
-        <div>Baggit, Zara, Fossil</div>
+        <div>{{productDetails.text1}}</div>
+        <div>{{productDetails.text2}}</div>
       </v-card-text>
       <div class="text-center">
-        <v-btn href="/shop" class="ma-2" outlined color="info">Check Now</v-btn>
+        <v-btn
+          :href="`/product/${productDetails.slug}`"
+          class="ma-2"
+          outlined
+          color="info"
+        >Check Now</v-btn>
       </div>
     </v-card>
   </v-hover>
