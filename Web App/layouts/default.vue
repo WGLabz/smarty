@@ -11,7 +11,26 @@
         label="Search"
         class="hidden-sm-and-down pl-10 ml-4"
       ></v-text-field>
+
       <v-spacer />
+     <v-toolbar-items>
+        <v-btn :to="{name: 'home'}" flat exact>Home</v-btn>
+        <v-btn :to="{name: 'second-page'}" flat>Second Page</v-btn>
+
+        <v-menu offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn color="primary" dark v-on="on">Dropdown</v-btn>
+          </template>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title>Item 1</v-list-tile-title>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-title>Item 2</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </v-toolbar-items>
     </v-app-bar>
     <v-main>
       <v-bottom-navigation value="activeBtn" color="#033" horizontal>

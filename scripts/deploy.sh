@@ -5,11 +5,9 @@ branch=$(git rev-parse --abbrev-ref HEAD)
 
 check_and_install_docker(){
     echo 'Verifying Docker Installation!'
-    cd scripts
-    ./check_and_install_docker.sh
+    ./scripts/check_and_install_docker.sh
     echo ''
     echo ''
-    cd ..
 }
 
 pull_from_git(){
@@ -54,7 +52,6 @@ build_app_and_copy(){
     echo ''
     echo ''
 }
-
 check_volumes_folder
 check_and_install_docker
 pull_from_git
