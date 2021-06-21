@@ -1,3 +1,5 @@
 .env
 temp/*
 backup/node_red/flows*cred.json
+backup/node_red/.sessions.json
+backup/node_red/settings*
