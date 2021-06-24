@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <v-toolbar color="primary" dark>
-      <v-toolbar-title style="width: 350px" v-text="title" />
+      <nuxt-link to="/">
+        <v-toolbar-title style="width: 350px" v-text="title" />
+      </nuxt-link>
       <v-text-field
         solo-inverted
         flat
@@ -53,68 +55,7 @@
         <v-icon left>mdi-account-group</v-icon>About Us
       </v-btn>
     </v-toolbar>
-    <!-- <v-app-bar :clipped-left="clipped" fixed app color="primary" dark>
-      <v-toolbar-title style="width: 350px" v-text="title" />
-      <v-text-field
-        light
-        solo-inverted
-        flat
-        hide-details
-        prepend-inner-icon="mdi-magnify"
-        label="Search"
-        class="hidden-sm-and-down pl-10 ml-4"
-      ></v-text-field>
-
-      <v-spacer />
-     <v-toolbar-items>
-        <v-btn :to="{name: 'home'}" flat exact>Home</v-btn>
-        <v-btn :to="{name: 'second-page'}" flat>Second Page</v-btn>
-
-        <v-menu offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn color="primary" dark v-on="on">Dropdown</v-btn>
-          </template>
-          <v-list>
-            <v-list-tile>
-              <v-list-tile-title>Item 1</v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-title>Item 2</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-menu>
-      </v-toolbar-items>
-    </v-app-bar>-->
-    <v-main>
-      <v-bottom-navigation value="activeBtn" color="#033" horizontal>
-        <!-- <v-btn href="/" nuxt>
-          <span>Home</span>
-        </v-btn>
-        <v-menu open-on-hover offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn v-on="on" href="/categories" nuxt>
-              <span>Categories</span>
-            </v-btn>
-          </template>
-          <v-card class="mx-auto" max-width="344" outlined>
-            <v-list-item
-              v-for="(item, index) in categories"
-              :key="index"
-              router
-              :to="`/category/${item.slug}`"
-            >
-              <v-list-item-action>
-                <v-list-item-title>{{ item.name }}</v-list-item-title>
-              </v-list-item-action>
-            </v-list-item>
-          </v-card>
-        </v-menu>
-        <v-btn href="https://wglabz.in" target="_blank">
-          <span>Blog</span>
-        </v-btn>-->
-      </v-bottom-navigation>
-    </v-main>
-    <v-main class="container_">
+    <v-main class="container_ mt-8">
       <nuxt />
     </v-main>
     <v-footer :padless="true">
@@ -263,6 +204,6 @@ a:visited {
   flex-direction: column;
 }
 .hidden-sm-and-down .v-icon {
-    color: black !important;
+  color: black !important;
 }
 </style>>
