@@ -1,67 +1,61 @@
 <template>
   <v-app>
-    <v-app-bar :clipped-left="clipped" fixed app color="primary" dark>
-      <v-toolbar-title style="width: 350px" v-text="title" />
+    <v-toolbar color="primary" dark>
+      <nuxt-link to="/">
+        <v-toolbar-title style="width: 350px" v-text="title" />
+      </nuxt-link>
       <v-text-field
-        light
         solo-inverted
         flat
+        dense
         hide-details
         prepend-inner-icon="mdi-magnify"
+        background-color="white"
         label="Search"
-        class="hidden-sm-and-down pl-10 ml-4"
+        class="hidden-sm-and-down text--black"
       ></v-text-field>
-
-      <v-spacer />
-     <v-toolbar-items>
-        <v-btn :to="{name: 'home'}" flat exact>Home</v-btn>
-        <v-btn :to="{name: 'second-page'}" flat>Second Page</v-btn>
-
-        <v-menu offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn color="primary" dark v-on="on">Dropdown</v-btn>
-          </template>
-          <v-list>
-            <v-list-tile>
-              <v-list-tile-title>Item 1</v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-title>Item 2</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-menu>
-      </v-toolbar-items>
-    </v-app-bar>
-    <v-main>
-      <v-bottom-navigation value="activeBtn" color="#033" horizontal>
-        <v-btn href="/" nuxt>
-          <span>Home</span>
-        </v-btn>
-        <v-menu open-on-hover offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn v-on="on" href="/categories" nuxt>
-              <span>Categories</span>
-            </v-btn>
-          </template>
-          <v-card class="mx-auto" max-width="344" outlined>
-            <v-list-item
-              v-for="(item, index) in categories"
-              :key="index"
-              router
-              :to="`/category/${item.slug}`"
+      <v-spacer></v-spacer>
+      <v-btn color="primary" to="/" nuxt small depressed class="ma-2">
+        <v-icon left>mdi-home</v-icon>Home
+      </v-btn>
+      <v-menu offset-y open-on-hover>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            color="primary"
+            to="/categories"
+            nuxt
+            small
+            elevation="0"
+            class="ma-2"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon left>mdi-format-list-text</v-icon>Categories
+          </v-btn>
+        </template>
+        <v-list dense max-width="400px" nav>
+          <v-btn-toggle v-for="(category, index) in categories" :key="index" group dense>
+            <v-btn
+              color="white"
+              :to="`/category/${category.slug}`"
+              nuxt
+              small
+              depressed
+              class="black--text"
+              min-width="120px"
+              max-width="120px"
             >
-              <v-list-item-action>
-                <v-list-item-title>{{ item.name }}</v-list-item-title>
-              </v-list-item-action>
-            </v-list-item>
-          </v-card>
-        </v-menu>
-        <v-btn href="https://wglabz.in" target="_blank">
-          <span>Blog</span>
-        </v-btn>
-      </v-bottom-navigation>
-    </v-main>
-    <v-main class="container_">
+              <v-icon dense left>{{category.mdi_icon}}</v-icon>
+              {{category.name}}
+            </v-btn>
+          </v-btn-toggle>
+        </v-list>
+      </v-menu>
+      <v-btn color="primary" to="/about-us" nuxt small depressed class="ma-2">
+        <v-icon left>mdi-account-group</v-icon>About Us
+      </v-btn>
+    </v-toolbar>
+    <v-main class="container_ mt-8">
       <nuxt />
     </v-main>
     <v-footer :padless="true">
@@ -184,7 +178,7 @@ export default {
   },
   mounted() {
     this.$axios
-      .get('/categories')
+      .get('/categories/all')
       .then((res) => {
         this.categories = res.data
       })
@@ -202,5 +196,14 @@ a:visited {
 }
 .container_ {
   padding: 0 0 0 0 !important;
+}
+.theme--dark.v-btn--active::before {
+  opacity: 0 !important;
+}
+.btn-toggle {
+  flex-direction: column;
+}
+.hidden-sm-and-down .v-icon {
+  color: black !important;
 }
 </style>>

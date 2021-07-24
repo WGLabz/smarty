@@ -17,10 +17,11 @@
       </v-card-text>
       <div class="text-center">
         <v-btn
-          :href="`/product/${productDetails.slug}`"
+          :to="{ path: `/product/${productDetails.slug}`}"
           class="ma-2"
           outlined
           color="info"
+          nuxt
         >Check Now</v-btn>
       </div>
     </v-card>
@@ -34,6 +35,3 @@ export default {
   },
 }
 </script>
-
-<style>
-</style>
