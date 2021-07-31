@@ -43,10 +43,10 @@ deploy_containers(){
 build_app_and_copy(){
     echo "Building the web app ande deploying to nginx"
     cd Web\ App/
-    # Build the app
+    # Generate static files
     npm run generate
     rm -r /opt/volumes/nginx/html/*
-    cp -r dist/* /opt/volumes/nginx/html/
+    cp -r dist/. /opt/volumes/nginx/html/
     cd ..
     # docker restart nginx
     echo ''

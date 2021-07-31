@@ -9,7 +9,7 @@
     >
       <h1 class="text-center font-size">{{categoryDetails.name}}</h1>
       <div class="text-center mt-2">
-        <v-btn class="white--text caption" :href="`/category/${categoryDetails.slug}`" text>
+        <v-btn class="white--text caption" :href="`/category/${categoryDetails.slug}`" text nuxt>
           Explore
           <v-icon class="white--text caption">mdi-arrow-right</v-icon>
         </v-btn>
