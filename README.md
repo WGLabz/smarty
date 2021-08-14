@@ -1,3 +1,5 @@
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=oksbwn_smarty&metric=code_smells)](https://sonarcloud.io/dashboard?id=oksbwn_smarty)  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=oksbwn_smarty&metric=alert_status)](https://sonarcloud.io/dashboard?id=oksbwn_smarty)
+
 # Smarty: The Website to dig into smart home appliances!
 > Setup Duplicati and Portainer credentials after the servers are up.
 
