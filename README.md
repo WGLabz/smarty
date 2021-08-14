@@ -25,9 +25,9 @@ First access the shell of the container `docker exec -it mongo bash` and run the
 )
 ```
 
-## Settign up NodeRED Authentication
+## Setting up NodeRED Authentication
 
-We need to add the following code snippet to the nodered `settings.js` file. The passwords need to be hashed and can be generated using [this site](https://www.devglan.com/online-tools/bcrypt-hash-generator)
+We need to add the following code snippet to the Node-RED `settings.js` file. The passwords need to be hashed and can be generated using [this site](https://www.devglan.com/online-tools/bcrypt-hash-generator)
 
 Edit the `settings.js` file using the command `sudo nano /opt/volumes/node-red/data/settings.js`, add the following snippet and restart the docker container, `docker restart node_red`
 
@@ -57,7 +57,7 @@ To make the http calls to the platform secured, add the following line to the `s
     },
 ```
 
-For serving static assets like image, without going through the platform, add the following line to the file,
+For serving static assets like images, without going through the platform, add the following line to the file,
 
 ```js
     httpStatic:"/assets/",
